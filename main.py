@@ -12,6 +12,12 @@ import hashlib
 import time
 # from youdao import translation
 
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
+YOUDAO_URL = 'http://openapi.youdao.com/api'
+APP_KEY = '48b36bfa4499d867'
+APP_SECRET = 'MuA3u7LldWpxmQmJXZenGMKIbH051gid'
 
 class DemoExtension(Extension):
 
