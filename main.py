@@ -55,7 +55,7 @@ class KeywordQueryEventListener(EventListener):
 
         response = do_request(data)
         item.append(ExtensionResultItem(icon='images/icon.png',
-                                        name=q,
+                                        name='test',
                                         description='test description',
                                         on_enter=CopyToClipboardAction(response.content)))
 
