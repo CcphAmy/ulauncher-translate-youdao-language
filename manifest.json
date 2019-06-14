@@ -1,0 +1,20 @@
+{
+  "manifest_version": "2",
+  "api_version": "1",
+  "name": "youdao translate extension",
+  "description": "youdao Translate Extension Description",
+  "developer_name": "ccphamy",
+  "icon": "images/icon.png",
+  "options": {
+    "query_debounce": 0.1
+  },
+  "preferences": [
+    {
+      "id": "translate_kw",
+      "type": "keyword",
+      "name": "tr",
+      "description": "youdao translate extension",
+      "default_value": "tr"
+    }
+  ]
+}
