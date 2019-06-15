@@ -38,6 +38,11 @@ def translation(question, source='auto', to='ja'):
     items = []
     q = question.strip()
 
+    if '' is q:
+        items.append(dict(
+            title='Bank', subtitle='空', icon=ICON_DEFAULT))
+        return items
+
     curtime = str(int(time.time()))
     salt = str(uuid.uuid1())
     signStr = APP_KEY + truncate(q) + salt + curtime + APP_SECRET
