@@ -38,11 +38,6 @@ def translation(question, source='auto', to='ja'):
     items = []
     q = question.strip()
 
-    if '' is q:
-        items.append(dict(
-            title='isBank', subtitle='空', icon=ICON_DEFAULT))
-        return items
-
     curtime = str(int(time.time()))
     salt = str(uuid.uuid1())
     signStr = APP_KEY + truncate(q) + salt + curtime + APP_SECRET
@@ -57,7 +52,7 @@ def translation(question, source='auto', to='ja'):
     result = response.content
     reJson = json.loads(result, encoding='utf-8')  # 有个unicode坑，不知道是不是python2 的原因
     if 'translation' in reJson:
-        subtitle = reJson['translation']
+        subtitle = ''.join(reJson['translation'])
         items.append(dict(
             title=title, subtitle=subtitle, icon=ICON_DEFAULT))
     else:
@@ -67,4 +62,4 @@ def translation(question, source='auto', to='ja'):
 
 
 if __name__ == '__main__':
-    print translation(" ")
+    print translation(" test")
