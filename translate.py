@@ -35,8 +35,13 @@ def do_request(data):
 
 def translation(question, source='auto', to='ja'):
     # 思路是发2条request, one: 翻译成日语， two：日语翻译成中文
+    items = []
+    q = question.strip()
 
-    q = question
+    if '' is q:
+        items.append(dict(
+            title='isBank', subtitle='空', icon=ICON_DEFAULT))
+        return items
 
     curtime = str(int(time.time()))
     salt = str(uuid.uuid1())
@@ -47,15 +52,19 @@ def translation(question, source='auto', to='ja'):
             'sign': sign}
 
     title = q
-    items = []
+
     response = do_request(data)
     result = response.content
     reJson = json.loads(result, encoding='utf-8')  # 有个unicode坑，不知道是不是python2 的原因
-    subtitle = reJson['translation']
-    items.append(dict(
-        title=title, subtitle=subtitle, icon=ICON_DEFAULT))
+    if 'translation' in reJson:
+        subtitle = reJson['translation']
+        items.append(dict(
+            title=title, subtitle=subtitle, icon=ICON_DEFAULT))
+    else:
+        items.append(dict(
+            title='Nothing', subtitle='nothing', icon=ICON_DEFAULT))
     return items
 
 
 if __name__ == '__main__':
-    print translation("在干嘛")
+    print translation(" ")

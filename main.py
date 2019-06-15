@@ -25,6 +25,7 @@ class KeywordQueryEventListener(EventListener):
                                              name=item['title'],
                                              description=item['subtitle'],
                                              on_enter=CopyToClipboardAction(item['subtitle'])))
+
         return RenderResultListAction(items)
 
 if __name__ == '__main__':
