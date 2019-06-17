@@ -67,12 +67,12 @@ def joinItem(items, title, subtitle, icon):
         title=title, subtitle=subtitle, icon=icon))
 
 
-def inletMain(question, source='auto', to='ja'):
+def inletMain(question, source='auto', to='ja', repairTo='zh-CHS'):
     items = []
 
     reSubtitle = translation(question, items, source, to).strip()
     if '' is not reSubtitle:
-        translation(reSubtitle, items, to, 'zh-CHS')
+        translation(reSubtitle, items, to, repairTo)
 
     return items
 

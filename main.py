@@ -23,8 +23,9 @@ class KeywordQueryEventListener(EventListener):
 
         source = extension.preferences['source']
         to = extension.preferences['to']
+        repairTo = extension.preferences['repairTo']
 
-        results = inletMain(query, source, to)
+        results = inletMain(query, source, to, repairTo)
         for item in results:
             items.append(ExtensionResultItem(icon=item['icon'],
                                              name=item['title'],

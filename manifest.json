@@ -13,14 +13,14 @@
       "id": "translate_kw",
       "type": "keyword",
       "name": "tr",
-      "description": "youdao translate extension",
+      "description": "中文=>zh-CHS|英文=>en|日文=>ja|韩文=>ko|法文=>fr|西班牙文=>es|葡萄牙文=>pt|意大利文=>it|俄文=>ru|越南文=>vi|德文=>de|阿拉伯文=>ar|印尼文=>id",
       "default_value": "tr"
     },
     {
       "id": "source",
       "type": "select",
       "name": "Source Language",
-      "description": "Source Language,Default:auto \n 自动识别=>auto|中文=>zh-CHS|英文=>en|日文=>ja|韩文=>ko|法文=>fr|西班牙文=>es|葡萄牙文=>pt|意大利文=>it|俄文=>ru|越南文=>vi|德文=>de|阿拉伯文=>ar|印尼文=>id",
+      "description": "Source Language,Default:auto",
       "default_value": "auto",
       "options": [
         "auto",
@@ -42,7 +42,28 @@
       "id": "to",
       "type": "select",
       "name": "To Language",
-      "description": "To Language,Default:ja \n 中文=>zh-CHS|英文=>en|日文=>ja|韩文=>ko|法文=>fr|西班牙文=>es|葡萄牙文=>pt|意大利文=>it|俄文=>ru|越南文=>vi|德文=>de|阿拉伯文=>ar|印尼文=>id",
+      "description": "To Language,Default:ja",
+      "default_value": "ja",
+      "options": [
+        "zh-CHS",
+        "en",
+        "ja",
+        "ko",
+        "fr",
+        "es",
+        "pt",
+        "it",
+        "vi",
+        "de",
+        "ar",
+        "id"
+      ]
+    },
+    {
+      "id": "repairTo",
+      "type": "select",
+      "name": "To Language",
+      "description": "To Language,Default:zh-CHS",
       "default_value": "ja",
       "options": [
         "zh-CHS",
