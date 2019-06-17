@@ -33,14 +33,12 @@ def do_request(data):
     return requests.post(YOUDAO_URL, data=data, headers=headers)
 
 
-def translation(question, source='auto', to='ja'):
+def translation(question, source='auto', to='ja', items=[]):
     # 思路是发2条request, one: 翻译成日语， two：日语翻译成中文
-    items = []
     q = question.strip()
 
     if '' is q:
-        items.append(dict(
-            title='Bank', subtitle='空', icon=ICON_DEFAULT))
+        joinItem(items, 'Blank', '空', ICON_DEFAULT)
         return items
 
     curtime = str(int(time.time()))
@@ -58,12 +56,16 @@ def translation(question, source='auto', to='ja'):
     reJson = json.loads(result, encoding='utf-8')  # 有个unicode坑，不知道是不是python2 的原因
     if 'translation' in reJson:
         subtitle = ''.join(reJson['translation'])
-        items.append(dict(
-            title=title, subtitle=subtitle, icon=ICON_DEFAULT))
+        joinItem(items, title, subtitle, ICON_DEFAULT)
+        translation(subtitle, to, 'zh-CHS', items)
     else:
-        items.append(dict(
-            title='Nothing', subtitle='nothing', icon=ICON_DEFAULT))
+        joinItem(items, '什么都没有', 'nothing', ICON_DEFAULT)
     return items
+
+
+def joinItem(items, title, subtitle, icon):
+    items.append(dict(
+        title=title, subtitle=subtitle, icon=icon))
 
 
 if __name__ == '__main__':
