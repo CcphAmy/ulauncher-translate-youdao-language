@@ -33,7 +33,7 @@ def do_request(data):
     return requests.post(YOUDAO_URL, data=data, headers=headers)
 
 
-def translation(question, source='auto', to='ja', items=[]):
+def translation(question, items, source='auto', to='ja'):
     # 思路是发2条request, one: 翻译成日语， two：日语翻译成中文
     q = question.strip()
 
@@ -57,10 +57,9 @@ def translation(question, source='auto', to='ja', items=[]):
     if 'translation' in reJson:
         subtitle = ''.join(reJson['translation'])
         joinItem(items, title, subtitle, ICON_DEFAULT)
-        translation(subtitle, to, 'zh-CHS', items)
     else:
         joinItem(items, '什么都没有', 'nothing', ICON_DEFAULT)
-    return items
+    return subtitle
 
 
 def joinItem(items, title, subtitle, icon):
@@ -68,5 +67,15 @@ def joinItem(items, title, subtitle, icon):
         title=title, subtitle=subtitle, icon=icon))
 
 
+def inletMain(question, source='auto', to='ja'):
+    items = []
+
+    reSubtitle = translation(question, items, source, to).strip()
+    if '' is not reSubtitle:
+        translation(reSubtitle, items, to, 'zh-CHS')
+
+    return items
+
+
 if __name__ == '__main__':
-    print translation(" test")
+    print inletMain(" test")

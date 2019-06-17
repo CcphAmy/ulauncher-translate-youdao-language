@@ -5,7 +5,7 @@ from ulauncher.api.shared.item.ExtensionResultItem import ExtensionResultItem
 from ulauncher.api.shared.action.CopyToClipboardAction import CopyToClipboardAction
 from ulauncher.api.shared.action.RenderResultListAction import RenderResultListAction
 from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
-from translate import translation
+from translate import inletMain
 
 
 class DemoExtension(Extension):
@@ -24,7 +24,7 @@ class KeywordQueryEventListener(EventListener):
         source = extension.preferences['source']
         to = extension.preferences['to']
 
-        results = translation(query, source, to)
+        results = inletMain(query, source, to)
         for item in results:
             items.append(ExtensionResultItem(icon=item['icon'],
                                              name=item['title'],
